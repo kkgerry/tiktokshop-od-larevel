@@ -1,5 +1,5 @@
 {
-  "name": "ecomphp/tiktokshop-php",
+  "name": "ecomphp/tiktokshop-od-larevel",
   "description": "Unofficial Tiktok Shop API Client in PHP",
   "type": "library",
   "license": "Apache-2.0",
