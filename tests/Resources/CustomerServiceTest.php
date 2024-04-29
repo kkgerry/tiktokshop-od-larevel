@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests\Resources;
+namespace Kkgerry\TiktokShop\Tests\Resources;
 
-use EcomPHP\TiktokShop\Resources\CustomerService;
-use EcomPHP\TiktokShop\Tests\TestResource;
+use Kkgerry\TiktokShop\Resources\CustomerService;
+use Kkgerry\TiktokShop\Tests\TestResource;
 
 class CustomerServiceTest extends TestResource
 {

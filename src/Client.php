@@ -8,26 +8,26 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop;
+namespace Kkgerry\TiktokShop;
 
-use EcomPHP\TiktokShop\Resources\CustomerService;
+use Kkgerry\TiktokShop\Resources\CustomerService;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\RequestOptions;
-use EcomPHP\TiktokShop\Errors\TiktokShopException;
-use EcomPHP\TiktokShop\Resources\Event;
-use EcomPHP\TiktokShop\Resources\Finance;
-use EcomPHP\TiktokShop\Resources\Fulfillment;
-use EcomPHP\TiktokShop\Resources\GlobalProduct;
-use EcomPHP\TiktokShop\Resources\Logistic;
-use EcomPHP\TiktokShop\Resources\Order;
-use EcomPHP\TiktokShop\Resources\Product;
-use EcomPHP\TiktokShop\Resources\Promotion;
-use EcomPHP\TiktokShop\Resources\ReturnRefund;
-use EcomPHP\TiktokShop\Resources\Seller;
-use EcomPHP\TiktokShop\Resources\Authorization;
-use EcomPHP\TiktokShop\Resources\Supplychain;
+use Kkgerry\TiktokShop\Errors\TiktokShopException;
+use Kkgerry\TiktokShop\Resources\Event;
+use Kkgerry\TiktokShop\Resources\Finance;
+use Kkgerry\TiktokShop\Resources\Fulfillment;
+use Kkgerry\TiktokShop\Resources\GlobalProduct;
+use Kkgerry\TiktokShop\Resources\Logistic;
+use Kkgerry\TiktokShop\Resources\Order;
+use Kkgerry\TiktokShop\Resources\Product;
+use Kkgerry\TiktokShop\Resources\Promotion;
+use Kkgerry\TiktokShop\Resources\ReturnRefund;
+use Kkgerry\TiktokShop\Resources\Seller;
+use Kkgerry\TiktokShop\Resources\Authorization;
+use Kkgerry\TiktokShop\Resources\Supplychain;
 use Psr\Http\Message\RequestInterface;
 
 /**

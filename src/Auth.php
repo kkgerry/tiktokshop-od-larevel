@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop;
+namespace Kkgerry\TiktokShop;
 
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\RequestOptions;
-use EcomPHP\TiktokShop\Errors\AuthorizationException;
+use Kkgerry\TiktokShop\Errors\AuthorizationException;
 
 class Auth
 {

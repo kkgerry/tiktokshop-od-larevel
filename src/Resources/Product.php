@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Resources;
+namespace Kkgerry\TiktokShop\Resources;
 
 use GuzzleHttp\RequestOptions;
 use SplFileInfo;

@@ -1,4 +1,4 @@
-# Unofficial Tiktok Shop API Client in PHP
+# Unofficial Tiktok Shop API Client in Laravel
 
 [![Total Downloads](https://poser.pugx.org/ecomphp/tiktokshop-php/downloads)](https://packagist.org/packages/ecomphp/tiktokshop-php) 
 [![Latest Stable Version](https://poser.pugx.org/ecomphp/tiktokshop-php/v/stable)](https://packagist.org/packages/ecomphp/tiktokshop-php) 
@@ -15,13 +15,13 @@ Since v2.x, library used API version 202309 and later. For older API version, pl
 Install with Composer
 
 ```shell
-composer require ecomphp/tiktokshop-php
+composer require kkgerry/tiktokshop-od-larevel
 ```
 
 ## Configure TiktokShop PHP Client
 
 ```php
-use EcomPHP\TiktokShop\Client;
+use Kkgerry\TiktokShop\Client;
 
 $app_key = 'your app key';
 $app_secret = 'your app secret';
@@ -130,8 +130,8 @@ $webhook = $client->webhook();
 or manually configure the webhook receiver
 
 ```php
-use EcomPHP\TiktokShop\Webhook;
-use EcomPHP\TiktokShop\Errors\TiktokShopException;
+use Kkgerry\TiktokShop\Webhook;
+use Kkgerry\TiktokShop\Errors\TiktokShopException;
 
 $webhook = new Webhook($client);
 try {

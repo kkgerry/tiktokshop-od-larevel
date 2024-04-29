@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests;
+namespace Kkgerry\TiktokShop\Tests;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
@@ -17,7 +17,7 @@ use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
-use EcomPHP\TiktokShop\Client as TiktokApiClient;
+use Kkgerry\TiktokShop\Client as TiktokApiClient;
 
 abstract class TestResource extends TestCase
 {

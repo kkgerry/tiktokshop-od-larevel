@@ -8,22 +8,22 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests;
+namespace Kkgerry\TiktokShop\Tests;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use EcomPHP\TiktokShop\Auth;
-use EcomPHP\TiktokShop\Client as TiktokApiClient;
-use EcomPHP\TiktokShop\Errors\AuthorizationException;
+use Kkgerry\TiktokShop\Auth;
+use Kkgerry\TiktokShop\Client as TiktokApiClient;
+use Kkgerry\TiktokShop\Errors\AuthorizationException;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
 class AuthTest extends TestCase
 {
     /**
-     * @var \EcomPHP\TiktokShop\Client
+     * @var \Kkgerry\TiktokShop\Client
      */
     protected $client;
 

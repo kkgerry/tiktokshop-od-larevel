@@ -8,12 +8,12 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests\Resources;
+namespace Kkgerry\TiktokShop\Tests\Resources;
 
-use EcomPHP\TiktokShop\Tests\TestResource;
+use Kkgerry\TiktokShop\Tests\TestResource;
 
 /**
- * @property-read \EcomPHP\TiktokShop\Resources\Order $caller
+ * @property-read \Kkgerry\TiktokShop\Resources\Order $caller
  */
 class OrderTest extends TestResource
 {

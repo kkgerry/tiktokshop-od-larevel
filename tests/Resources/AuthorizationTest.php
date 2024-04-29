@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests\Resources;
+namespace Kkgerry\TiktokShop\Tests\Resources;
 
-use EcomPHP\TiktokShop\Tests\TestResource;
+use Kkgerry\TiktokShop\Tests\TestResource;
 
 class AuthorizationTest extends TestResource
 {

@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests;
+namespace Kkgerry\TiktokShop\Tests;
 
 use GuzzleHttp\Psr7\Request;
-use EcomPHP\TiktokShop\Auth;
-use EcomPHP\TiktokShop\Client;
-use EcomPHP\TiktokShop\Errors\TiktokShopException;
-use EcomPHP\TiktokShop\Resource;
+use Kkgerry\TiktokShop\Auth;
+use Kkgerry\TiktokShop\Client;
+use Kkgerry\TiktokShop\Errors\TiktokShopException;
+use Kkgerry\TiktokShop\Resource;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use ReflectionClass;

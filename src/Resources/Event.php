@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Resources;
+namespace Kkgerry\TiktokShop\Resources;
 
-use EcomPHP\TiktokShop\Resource;
+use Kkgerry\TiktokShop\Resource;
 use GuzzleHttp\RequestOptions;
 
 class Event extends Resource

@@ -8,14 +8,14 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests\Resources;
+namespace Kkgerry\TiktokShop\Tests\Resources;
 
-use EcomPHP\TiktokShop\Resources\GlobalProduct;
-use EcomPHP\TiktokShop\Tests\TestResource;
+use Kkgerry\TiktokShop\Resources\GlobalProduct;
+use Kkgerry\TiktokShop\Tests\TestResource;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @property-read \EcomPHP\TiktokShop\Resources\GlobalProduct $caller
+ * @property-read \Kkgerry\TiktokShop\Resources\GlobalProduct $caller
  */
 class GlobalProductTest extends TestResource
 {

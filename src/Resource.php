@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop;
+namespace Kkgerry\TiktokShop;
 
 use DateTimeInterface;
-use EcomPHP\TiktokShop\Errors\TiktokShopException;
+use Kkgerry\TiktokShop\Errors\TiktokShopException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use EcomPHP\TiktokShop\Client as TiktokShopClient;
-use EcomPHP\TiktokShop\Errors\ResponseException;
-use EcomPHP\TiktokShop\Errors\TokenException;
+use Kkgerry\TiktokShop\Client as TiktokShopClient;
+use Kkgerry\TiktokShop\Errors\ResponseException;
+use Kkgerry\TiktokShop\Errors\TokenException;
 
 abstract class Resource
 {
@@ -50,7 +50,7 @@ abstract class Resource
     }
 
     /**
-     * @throws \EcomPHP\TiktokShop\Errors\TiktokShopException
+     * @throws \Kkgerry\TiktokShop\Errors\TiktokShopException
      */
     public function call($method, $action, $params = [])
     {

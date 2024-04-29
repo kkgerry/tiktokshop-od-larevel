@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests;
+namespace Kkgerry\TiktokShop\Tests;
 
-use EcomPHP\TiktokShop\Client;
-use EcomPHP\TiktokShop\Errors\TiktokShopException;
-use EcomPHP\TiktokShop\Webhook;
+use Kkgerry\TiktokShop\Client;
+use Kkgerry\TiktokShop\Errors\TiktokShopException;
+use Kkgerry\TiktokShop\Webhook;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 

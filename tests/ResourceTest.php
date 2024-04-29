@@ -8,16 +8,16 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Tests;
+namespace Kkgerry\TiktokShop\Tests;
 
-use EcomPHP\TiktokShop\Errors\TiktokShopException;
+use Kkgerry\TiktokShop\Errors\TiktokShopException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
-use EcomPHP\TiktokShop\Errors\ResponseException;
-use EcomPHP\TiktokShop\Resource;
+use Kkgerry\TiktokShop\Errors\ResponseException;
+use Kkgerry\TiktokShop\Resource;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 

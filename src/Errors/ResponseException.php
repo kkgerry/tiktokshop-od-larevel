@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace EcomPHP\TiktokShop\Errors;
+namespace Kkgerry\TiktokShop\Errors;
 
 class ResponseException extends TiktokShopException
 {
