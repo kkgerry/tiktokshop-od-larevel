@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "EcomPHP\\TiktokShop\\": "src"
+      "Kkgerry\\TiktokShop\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "EcomPHP\\TiktokShop\\Tests\\": "tests"
+      "Kkgerry\\TiktokShop\\Tests\\": "tests"
     }
   },
   "scripts": {
