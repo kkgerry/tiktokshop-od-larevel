@@ -10,6 +10,9 @@
 
 namespace Kkgerry\TiktokShop;
 
+use Kkgerry\TiktokShop\Resources\AffiliateCreator;
+use Kkgerry\TiktokShop\Resources\AffiliateSeller;
+use Kkgerry\TiktokShop\Resources\Analytics;
 use Kkgerry\TiktokShop\Resources\CustomerService;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Client as GuzzleHttpClient;
@@ -43,6 +46,8 @@ use Psr\Http\Message\RequestInterface;
  * @property-read Supplychain $Supplychain
  * @property-read Event $Event
  * @property-read ReturnRefund $ReturnRefund
+ * @property-read AffiliateSeller $AffiliateSeller
+ * @property-read AffiliateCreator $AffiliateCreator
  */
 class Client
 {
@@ -79,6 +84,9 @@ class Client
         Event::class,
         ReturnRefund::class,
         CustomerService::class,
+        AffiliateSeller::class,
+        AffiliateCreator::class,
+        Analytics::class,
     ];
 
     public function __construct($app_key, $app_secret, $options = [])
@@ -138,7 +146,6 @@ class Client
     {
         $uri = $request->getUri();
         parse_str($uri->getQuery(), $query);
-
         $query['app_key'] = $this->getAppKey();
         $query['timestamp'] = time();
 
@@ -152,7 +159,7 @@ class Client
 
         // shop_cipher is not allowed in some api
         if (preg_match('/^\/product\/(\d{6})\/(global_products|files\/upload|images\/upload)/', $uri->getPath())
-            || preg_match('/^\/(authorization|seller)\/(\d{6})\//', $uri->getPath())) {
+            || preg_match('/^\/(authorization|seller|affiliate_creator)\/(\d{6})\//', $uri->getPath())) {
             unset($query['shop_cipher']);
         }
 
@@ -164,24 +171,38 @@ class Client
         if (!$request->getHeaderLine('content-type')) {
             $request = $request->withHeader('content-type', 'application/json');
         }
-
         return $request->withUri($uri);
     }
 
     protected function httpClient()
     {
         $stack = HandlerStack::create();
+
         $stack->push(Middleware::mapRequest(function (RequestInterface $request) {
             return $this->modifyRequestBeforeSend($request);
         }));
-
         $options = array_merge([
             RequestOptions::HTTP_ERRORS => false, // disable throw exception on http 4xx, manual handle it
             'handler' => $stack,
             'base_uri' => 'https://open-api.tiktokglobalshop.com/',
         ], $this->options ?? []);
-
         return new GuzzleHttpClient($options);
+    }
+
+    protected function httpClientOptions()
+    {
+        $returnData = [
+            'app_key' => $this->getAppKey(),
+            'app_secret' => $this->getAppSecret(),
+            'base_uri' => 'https://open-api.tiktokglobalshop.com/',
+            'option' => $this->options ?? [],
+            'access_token' => $this->access_token
+        ];
+        if ($this->shop_cipher && !isset($query['shop_cipher'])) {
+            $returnData['shop_cipher'] = $this->shop_cipher;
+        }
+        
+        return $returnData;
     }
 
     /**
@@ -244,7 +265,8 @@ class Client
         }
 
         $resource->useVersion($this->version);
-        $resource->useHttpClient($this->httpClient());
+        //$resource->useHttpClient($this->httpClient());
+        $resource->useOption($this->httpClientOptions());
 
         return $resource;
     }

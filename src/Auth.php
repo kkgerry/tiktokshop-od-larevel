@@ -16,6 +16,8 @@ use Kkgerry\TiktokShop\Errors\AuthorizationException;
 
 class Auth
 {
+    use TikTokForwardRequestTrait;
+
     protected $client;
 
     protected $httpClient;
@@ -49,7 +51,32 @@ class Auth
 
     public function getToken($code)
     {
-        $response = $this->httpClient->get($this->authHost . '/api/v2/token/get', [
+
+        $newClient = new \GuzzleHttp\Client(['verify'=>false]);
+        $url = $this->getForwardUrl('auth');
+        $params = [
+            'app_key' => $this->client->getAppKey(),
+            'app_secret' => $this->client->getAppSecret(),
+            'auth_code' => $code,
+            'grant_type' => 'authorized_code',
+        ];
+        $requestData = [
+            'url' => $this->authHost . '/api/v2/token/get',
+            'method' => 'GET',
+            'params' => ($params) ? json_encode($params) : [],
+        ];
+
+        $response = $newClient->post($url,[
+            'form_params' => $requestData
+        ]);
+
+        $resultData = json_decode((string) $response->getBody(), true);
+        if($resultData['error']){
+            throw new AuthorizationException($resultData['msg']);
+        }
+        $json = $resultData['data'];
+
+       /* $response = $this->httpClient->get($this->authHost . '/api/v2/token/get', [
             RequestOptions::QUERY => [
                 'app_key' => $this->client->getAppKey(),
                 'app_secret' => $this->client->getAppSecret(),
@@ -58,7 +85,7 @@ class Auth
             ],
         ]);
 
-        $json = json_decode($response->getBody(), true);
+        $json = json_decode($response->getBody(), true);*/
         if ($json['code'] !== 0) {
             throw new AuthorizationException($json['message'], $json['code']);
         }
@@ -68,7 +95,32 @@ class Auth
 
     public function refreshNewToken($refresh_token)
     {
-        $response = $this->httpClient->get($this->authHost . '/api/v2/token/refresh', [
+
+        $newClient = new \GuzzleHttp\Client(['verify'=>false]);
+        $url = $this->getForwardUrl('auth');
+        $params = [
+            'app_key' => $this->client->getAppKey(),
+            'app_secret' => $this->client->getAppSecret(),
+            'refresh_token' => $refresh_token,
+            'grant_type' => 'refresh_token',
+        ];
+        $requestData = [
+            'url' => $this->authHost . '/api/v2/token/refresh',
+            'method' => 'GET',
+            'params' => ($params) ? json_encode($params) : [],
+        ];
+
+        $response = $newClient->post($url,[
+            'form_params' => $requestData
+        ]);
+
+        $resultData = json_decode((string) $response->getBody(), true);
+        if($resultData['error']){
+            throw new AuthorizationException($resultData['msg']);
+        }
+        $json = $resultData['data'];
+
+        /*$response = $this->httpClient->get($this->authHost . '/api/v2/token/refresh', [
             RequestOptions::QUERY => [
                 'app_key' => $this->client->getAppKey(),
                 'app_secret' => $this->client->getAppSecret(),
@@ -78,6 +130,7 @@ class Auth
         ]);
 
         $json = json_decode($response->getBody(), true);
+        */
         if ($json['code'] !== 0) {
             throw new AuthorizationException($json['message'], $json['code']);
         }

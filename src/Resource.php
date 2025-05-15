@@ -20,8 +20,11 @@ use Kkgerry\TiktokShop\Errors\TokenException;
 
 abstract class Resource
 {
+    use TikTokForwardRequestTrait;
+
     /** @var Client */
     protected $httpClient;
+    protected $options;
 
     protected $category = '';
 
@@ -49,20 +52,60 @@ abstract class Resource
         return $this;
     }
 
+    public function useOption($option)
+    {
+        $this->options = $option;
+    }
+
     /**
      * @throws \Kkgerry\TiktokShop\Errors\TiktokShopException
      */
     public function call($method, $action, $params = [])
     {
         $uri = trim($this->category.'/'.$this->version.'/'.$action, '/');
+        /*print_r($method);
+        echo "<br>";
+        print_r($uri);
+        echo "<br>";*/
+        //print_r($this->httpClient->getConfig());
+        //print_r($this->options);
+        //print_r($params);
+        //die();
+
+        //$options = $this->httpClient->getClientOptions();
+
+        $requestData = [
+            'url' => $uri,
+            'method' => $method,
+            'params' => ($params) ? json_encode($params) : [],
+            'options' => $this->options,
+        ];
+        //print_r($requestData);
+        //die();
         try {
-            $response = $this->httpClient->request($method, $uri, $params);
+            
+            $newClient = new Client(['verify'=>false]);
+            $fwUrl = $this->getForwardUrl();
+
+            $response = $newClient->post($fwUrl,[
+                'form_params' => $requestData
+            ]);
+
+            $resultData = json_decode((string) $response->getBody(), true);
+            //print_r($resultData);die();
+            if(!isset($resultData['error']) || $resultData['error']){
+                throw new ResponseException($resultData['msg'] ?? '请求中转失败');
+            }
+            //$response = $this->httpClient->request($method, $uri, $params);
         } catch (GuzzleException $e) {
             throw new ResponseException($e->getMessage(), $e->getCode(), $e);
         }
 
-        $json = json_decode((string) $response->getBody(), true);
+        //$json = json_decode((string) $response->getBody(), true);
+        $json = $resultData['data'];
 
+        //print_r($json);
+        //die();
         if ($json === null) {
             throw new ResponseException('Unable to parse response string as JSON');
         }
